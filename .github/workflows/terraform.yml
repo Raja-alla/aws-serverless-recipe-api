@@ -24,12 +24,9 @@ jobs:
       - name: Create Lambda deployment package
         working-directory: .
         run: |
-          mkdir -p lambda_build
-          cp lambda/recipe_api.py lambda_build/
-          cd lambda_build
-          zip -r ../lambda/recipe_api.zip .
-          cd ..
-          rm -rf lambda_build
+          mkdir -p terraform/lambda
+          zip -j terraform/lambda/recipe_api.zip lambda/recipe_api.py
+          ls -l terraform/lambda/recipe_api.zip
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
