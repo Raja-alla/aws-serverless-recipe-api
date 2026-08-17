@@ -50,5 +50,10 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - name: Python Syntax Check
+        working-directory: .
+        run: |
+          python -m py_compile lambda/recipe_api.py
+
       - name: Terraform Plan
         run: terraform plan -lock=false
