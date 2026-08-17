@@ -21,6 +21,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create Lambda deployment package
+        run: |
+          mkdir -p lambda_build
+          cp ../lambda/recipe_api.py lambda_build/
+          cd lambda_build
+          zip -r ../lambda/recipe_api.zip .
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
