@@ -9,3 +9,4 @@ crash.*.log
 
 # Lambda deployment packages
 *.zip
+p2-state-backup.json
