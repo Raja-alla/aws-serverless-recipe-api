@@ -22,11 +22,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create Lambda deployment package
+        working-directory: .
         run: |
           mkdir -p lambda_build
-          cp ../lambda/recipe_api.py lambda_build/
+          cp lambda/recipe_api.py lambda_build/
           cd lambda_build
           zip -r ../lambda/recipe_api.zip .
+          cd ..
+          rm -rf lambda_build
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
